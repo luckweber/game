@@ -1,6 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 from Tkinter import *
+from tileset import *
 
 root = Tk()
 pygame.init()
@@ -17,11 +18,11 @@ fpsClock.tick(FPS)
 icon = pygame.image.load('img/icon.jpg')
 pygame.display.set_icon(icon)
 
-DISPLAYSURF = pygame.display.set_mode((800, 600), 0, 32)
+DISPLAYSURF = pygame.display.set_mode((1024, 768), 0, 0)
 
 #-----------------FILES IMAGES -------------------------------------
 megaImg = pygame.image.load('img/mega.png')
-scenaryImg = pygame.image.load('img/phase-guile.png')
+scenaryImg = pygame.image.load('img/BG.png')
 
 
 
@@ -48,38 +49,73 @@ textSurfaceObj = fontObj.render('Hello world!', True, GREEN, BLUE)
 textRectObj = textSurfaceObj.get_rect()
 textRectObj.center = (100, 150)
 
-tile_w = 50
-tile_h = 50
+tile_w = 128
+tile_h = 128
+
+width = 200
+height = 240
+
+COLOR = (200, 100, 100)
+
+sprite_sheet = pygame.image.load('img/png/walk02.png').convert()
+image = pygame.Surface([width, height]	).convert()
+image.blit(sprite_sheet, (0, 0), (0, 0, width, height))
+image.set_colorkey(COLOR)
+
+image1  = SpriteSheet('img/1.png')
+image2  = SpriteSheet('img/2.png')
+image3  = SpriteSheet('img/3.png')
+image4  = SpriteSheet('img/4.png')
+image5  = SpriteSheet('img/5.png')
+image6  = SpriteSheet('img/6.png')
+
+
+image13  = SpriteSheet('img/13.png')
+image14  = SpriteSheet('img/14.png')
+image15  = SpriteSheet('img/15.png')
+
+
+
 mapSet = [
-			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+			[0,0,0,0,0,0,0,0],
+			[0,0,0,0,0,0,0,0],
+			[0,0,0,0,0,0,0,0],
+			[0,0,0,0,13,14,15,0],
+			[1,2,2,3,0,0,0,0],
+			[4,5,5,6,0,0,0,0]
 		]
 
 def drawMap():
-	for tile_x in range(0,16):
-		for tile_y in range(0, 12):
+	for tile_x in range(0,8):
+		for tile_y in range(0, 6):
 			if mapSet[tile_y][tile_x] == 1:
-				pygame.draw.rect(DISPLAYSURF, RED, (0 + (tile_w * tile_x), 0 + (tile_y * tile_h), tile_w, tile_h))
-			elif mapSet[tile_y][tile_x] == 0:
-				pygame.draw.rect(DISPLAYSURF, BLACK, (0 + (tile_w * tile_x), 0 + (tile_h * tile_y), tile_w, tile_h))
-				
+				DISPLAYSURF.blit(image1.get_image(0,0,tile_w,tile_h), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 2:
+				DISPLAYSURF.blit(image2.get_image(0,0,tile_w,tile_h), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 3:
+				DISPLAYSURF.blit(image3.get_image(0,0,tile_w,tile_h), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 4:
+				DISPLAYSURF.blit(image4.get_image(0,0,tile_w,tile_h), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 5:
+				DISPLAYSURF.blit(image5.get_image(0,0,tile_w,tile_h), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 6:
+				DISPLAYSURF.blit(image6.get_image(0,0,tile_w,tile_h), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 13:
+				DISPLAYSURF.blit(image13.get_image(0,0,tile_w,93), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 14:
+				DISPLAYSURF.blit(image14.get_image(0,0,tile_w,93), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+			elif mapSet[tile_y][tile_x] == 15:
+				DISPLAYSURF.blit(image15.get_image(0,0,tile_w,93), (0 + (tile_w * tile_x), 0 + (tile_h * tile_y)))
+
 while True:
 	DISPLAYSURF.fill(WHITE)
 	DISPLAYSURF.blit(scenaryImg, (0, 0))
-	DISPLAYSURF.blit(megaImg, (megaX, megaY))
+	#DISPLAYSURF.blit(megaImg, (megaX, megaY))
+	#DISPLAYSURF.blit(textSurfaceObj, textRectObj)
 	
-	DISPLAYSURF.blit(textSurfaceObj, textRectObj)
-	
+	DISPLAYSURF.blit(image, (megaX, megaY))
+	#DISPLAYSURF.blit(image1.get_image(1,0,515,435), (0, 0))
+	#DISPLAYSURF.blit(image1.get_image(1,0,515,435), (510, 0))
 	drawMap();
 	
 	for event in pygame.event.get():
