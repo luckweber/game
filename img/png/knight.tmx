@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="200" tileheight="240" nextobjectid="1">
+ <tileset firstgid="1" name="walk01" tilewidth="200" tileheight="240" tilecount="1" columns="1">
+  <image source="walk01.png" width="200" height="240"/>
+ </tileset>
+ <tileset firstgid="2" name="walk02" tilewidth="200" tileheight="240" tilecount="1" columns="1">
+  <image source="walk02.png" width="200" height="240"/>
+ </tileset>
+ <tileset firstgid="3" name="walk03" tilewidth="200" tileheight="240" tilecount="1" columns="1">
+  <image source="walk03.png" width="200" height="240"/>
+ </tileset>
+ <tileset firstgid="4" name="walk04" tilewidth="200" tileheight="240" tilecount="1" columns="1">
+  <image source="walk04.png" width="200" height="240"/>
+ </tileset>
+ <tileset firstgid="5" name="walk05" tilewidth="200" tileheight="240" tilecount="1" columns="1">
+  <image source="walk05.png" width="200" height="240"/>
+ </tileset>
+ <layer name="Camada de Tiles 1" width="10" height="10">
+  <data encoding="csv">
+1,2,3,4,5,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

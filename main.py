@@ -1,4 +1,5 @@
 import pygame, sys
+from datetime import datetime
 from pygame.locals import *
 from Tkinter import *
 from tileset import *
@@ -12,6 +13,7 @@ pygame.init()
 
 FPS = 30
 fpsClock = pygame.time.Clock()
+clock = pygame.time.Clock()
 fpsClock.tick(FPS)
 
 #---------------------------ICON WINDOW--------------------------
@@ -118,6 +120,8 @@ while True:
 	#DISPLAYSURF.blit(image1.get_image(1,0,515,435), (510, 0))
 	drawMap();
 	
+	print clock.tick(20)
+	
 	for event in pygame.event.get():
 		#print (event)
 		if event.type == QUIT:
@@ -125,13 +129,14 @@ while True:
 			sys.exit()
 				
 	if pygame.key.get_pressed()[K_RIGHT] == True:
-			megaX +=5
+			megaX +=10
 	elif pygame.key.get_pressed()[K_LEFT] == True:
-		megaX -=5
+		megaX -=10
 	elif pygame.key.get_pressed()[K_DOWN] == True:
-		megaY +=5
+		megaY +=10
 	elif pygame.key.get_pressed()[K_UP] == True:
-		megaY -=5
+		megaY -=10
 	
 	pygame.display.update()	
-	pygame.time.delay(100)
+	#pygame.time.delay(100)
+	clock.tick(20)
